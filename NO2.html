@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THR Calculator</title>
+</head>
+<body>
+  <h2>THR Calculator</h2>
+  <form>
+    <label for="gajiPokok">Gaji Pokok:</label>
+    <input type="number" id="gajiPokok" name="gajiPokok"><br><br>
+    <label for="tunjanganTetap">Tunjangan Tetap:</label>
+    <input type="number" id="tunjanganTetap" name="tunjanganTetap"><br><br>
+    <label for="masaKerja">Masa Kerja (Dalam Bulan):</label>
+    <input type="number" id="masaKerja" name="masaKerja"><br><br>
+    <button onclick="calculateTHR()">Calculate THR</button>
+  </form>
+  <div id="output"></div>
+
+  <script>
+    function calculateSalaryAndTHR() {
+      let gajiPokok = document.getElementById("gajiPokok").value;
+      let tunjanganTetap = document.getElementById("tunjanganTetap").value;
+      let masaKerja = document.getElementById("masaKerja").value;
+      let totalGaji = parseInt(gajiPokok) + parseInt(tunjanganTetap);
+
+      if (masaKerja >= 12) {
+        let thr = totalGaji;
+        document.getElementById("output").innerHTML = `Your total is Rp ${totalGaji.toLocaleString()} and your THR payment is Rp ${thr.toLocaleString()}.`;
+      } else {
+        let thr = (totalGaji / 12) * masaKerja;
+        document.getElementById("output").innerHTML = `Your total is Rp ${totalGaji.toLocaleString()} and your THR payment is Rp ${thr.toLocaleString()}.`;
+      }
+    }
+  </script>
+</body>
+</html>
